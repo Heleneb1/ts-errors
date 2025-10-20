@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/ts-errors)](https://www.npmjs.com/package/ts-errors)
 [![GitHub stars](https://img.shields.io/github/stars/Heleneb1/ts-errors?style=social)](https://github.com/Heleneb1/ts-errors)
 
-📘 Ce README existe aussi en et en [🇬🇧 English](README.md).
+📘 Ce README existe aussi en [🇬🇧 English](README.md).
 
 > Gère tes erreurs HTTP sans douleur — avec élégance, typage strict et un soupçon d’emoji ✨
 
