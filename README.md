@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Heleneb1/ts-errors/assets/banner.png" alt="ts-errors banner" />
+  <img src="https://raw.githubusercontent.com/Heleneb1/ts-errors/main/assets/banner.png" alt="ts-errors banner" />
 </p>
 
 # 🧱 ts-errors
