@@ -1,20 +1,26 @@
 {
   "name": "ts-errors",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple TypeScript library to visualize, debug and understand your errors, with clarity and style.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-  "dist/**",
-  "!dist/src/**",
-  "README.md",
-  "LICENSE"
-],
+    "dist/**",
+    "!dist/src/**",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "jest --verbose"
   },
-  "keywords": ["typescript", "errors", "http", "express", "logger"],
+  "keywords": [
+    "typescript",
+    "errors",
+    "http",
+    "express",
+    "logger"
+  ],
   "author": "Heleneb1",
   "license": "MIT",
   "devDependencies": {
@@ -27,10 +33,10 @@
     "typescript": "^5.9.3"
   },
   "repository": {
-  "type": "git",
-  "url": "https://github.com/Heleneb1/ts-errors.git"
-},
-"engines": {
-  "node": ">=18.0.0"
-}
+    "type": "git",
+    "url": "https://github.com/Heleneb1/ts-errors.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }
