@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/ts-errors)](https://www.npmjs.com/package/ts-errors)
 [![GitHub stars](https://img.shields.io/github/stars/Heleneb1/ts-errors?style=social)](https://github.com/Heleneb1/ts-errors)
 
-📘 Ce README existe aussi en et en [🇬🇧 English](README.md).
+📘 Ce README existe aussi en [🇬🇧 English](README.md).
 
 > Gère tes erreurs HTTP sans douleur — avec élégance, typage strict et un soupçon d’emoji ✨
 
@@ -134,6 +134,29 @@ try {
   }
 }
 ```
+
+### 🗃️ Accès au tableau ou au JSON
+
+Chaque CustomError peut être affichée en tableau dans la console avec log() ou récupérée au format JSON avec toJSON().
+
+```ts
+import { NotFoundError, CustomError } from "ts-errors";
+
+try {
+  throw NotFoundError(undefined, { userId: 42 });
+} catch (err) {
+  if (err instanceof CustomError) {
+    // Affichage en tableau dans la console
+    err.log();
+
+    // Récupérer l'objet JSON pour l'API ou autre usage
+
+    console.log(err.toJSON());
+  }
+}
+```
+
+![image ts-errors](https://raw.githubusercontent.com/Heleneb1/ts-errors/main/assets/image.png)
 
 ### Exemple de sortie console
 

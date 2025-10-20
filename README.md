@@ -140,6 +140,29 @@ try {
 }
 ```
 
+### 🗃️ Access as Table or JSON
+
+Each CustomError can be displayed as a table in the console using log() or retrieved as JSON using toJSON().
+
+```ts
+import { NotFoundError, CustomError } from "ts-errors";
+
+try {
+  throw NotFoundError(undefined, { userId: 42 });
+} catch (err) {
+  if (err instanceof CustomError) {
+    // Display as a table in the console
+    err.log();
+
+    // Get the JSON object for API or other usage
+
+    console.log(err.toJSON());
+  }
+}
+```
+
+![image ts-errors](https://raw.githubusercontent.com/Heleneb1/ts-errors/main/assets/image.png)
+
 ### Console Output example
 
 ```

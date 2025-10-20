@@ -1,5 +1,5 @@
 {
-  "name": "ts-errors",
+  "name": "@heleneb1/ts-errors",
   "version": "1.0.1",
   "description": "A simple TypeScript library to visualize, debug and understand your errors, with clarity and style.",
   "main": "dist/index.js",
