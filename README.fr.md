@@ -3,40 +3,35 @@
 [![npm version](https://img.shields.io/npm/v/ts-errors)](https://www.npmjs.com/package/ts-errors)
 [![GitHub stars](https://img.shields.io/github/stars/Heleneb1/ts-errors?style=social)](https://github.com/Heleneb1/ts-errors)
 
-📘 This README is also available in [🇫🇷 French](README.fr.md) and [🇬🇧 English](README.en.md).
+📘 Ce README existe aussi en et en [🇬🇧 English](README.md).
 
-> Handle HTTP errors painlessly — with elegance, strict typing, and a touch of emoji ✨
+> Gère tes erreurs HTTP sans douleur — avec élégance, typage strict et un soupçon d’emoji ✨
 
-A **minimalist TypeScript library** to create, format, and manage HTTP errors with **style, structure, and expressiveness**. Compatible with **JavaScript**, **Express**, and **external loggers** like winston, pino, etc.
-
----
-
-## 💡 Why ts-errors ?
-
-Because errors deserve better than `throw new Error("Oops")`.  
-`ts-errors` helps you to:
-
-- Give meaning to your errors (categories, details, typing)
-- Display them clearly (console, logs, API)
-- Integrate them easily into your stack (Express, Winston, etc.)
+Une **librairie TypeScript minimaliste** pour créer, formater et gérer tes erreurs HTTP avec **style, structure et expressivité**.  
+Compatible **JavaScript**, **Express**, et les **loggers externes** (`winston`, `pino`, etc.).
 
 ---
 
-## ✨ Features
+## 💡 Pourquoi ts-errors ?
 
-- ✅ Extensible CustomError class with emoji, statusCode, category, details
+Parce que les erreurs méritent mieux qu’un simple `throw new Error("Oops")`.  
+`ts-errors` te permet de :
 
-- 🎯 Ready-to-use errors (NotFoundError, UnauthorizedError, etc.)
+- Donner du sens à tes erreurs (catégories, détails, typage)
+- Les afficher avec clarté (console, logs, API)
+- Les intégrer facilement dans ton stack (Express, Winston, etc.)
 
-- 🎨 Formatted output: compact, colorized, or tabular
+---
 
-- ⚙️ Built-in Express middleware
+## ✨ Fonctionnalités
 
-- 🔌 External logger support (winston, pino, etc.)
-
-- 📦 Zero external dependencies
-
-- 🧠 Strict typing + JS/TS autocompletion
+- ✅ Classe `CustomError` extensible avec `emoji`, `statusCode`, `category`, `details`
+- 🎯 Erreurs prêtes à l’emploi (`NotFoundError`, `UnauthorizedError`, etc.)
+- 🎨 Affichage formaté : compact, colorisé ou tabulaire
+- ⚙️ Middleware Express intégré
+- 🔌 Support des loggers externes (`winston`, `pino`, etc.)
+- 📦 Zéro dépendance externe
+- 🧠 Typage strict + autocomplétion JS/TS
 
 ---
 
@@ -48,7 +43,7 @@ npm install ts-errors
 
 ---
 
-## ⚙️ Quick Start
+## ⚙️ Utilisation rapide
 
 ### TypeScript
 
@@ -68,7 +63,7 @@ throw NotFoundError("User not found", { userId: 42 });
 
 ---
 
-## 🧩Using `CustomError`
+## 🧩 Exemple avec `CustomError`
 
 ```ts
 import { CustomError } from "ts-errors";
@@ -80,7 +75,7 @@ throw new CustomError("Something went wrong", 500, {
 
 ---
 
-## 🧰 Express Middleware
+## 🧰 Middleware Express
 
 ```ts
 import express from "express";
@@ -95,11 +90,11 @@ app.get("/user/:id", (req, res, next) => {
 app.use(errorMiddleware);
 ```
 
-> The errorMiddleware automatically serializes and sends JSON responses to the client.
+> Le middleware `errorMiddleware` gère automatiquement la sérialisation et la réponse JSON côté client.
 
 ---
 
-## ⚙️ Global Configuration
+## ⚙️ Configuration Globale
 
 ```ts
 import { CustomError } from "ts-errors";
@@ -113,7 +108,7 @@ CustomError.settings = {
 
 ---
 
-## 🔌 External Logger Integration
+## 🔌 Intégration avec un Logger Externe
 
 ```ts
 import { CustomError } from "ts-errors";
@@ -128,7 +123,7 @@ CustomError.setLogger(logger, "error");
 
 ---
 
-## 🖼️ Formatted Output
+## 🖼️ Affichage Formaté
 
 ```ts
 try {
@@ -140,7 +135,7 @@ try {
 }
 ```
 
-### Console Output example
+### Exemple de sortie console
 
 ```
 +----+----------------+------------+----------------+--------------+
@@ -150,11 +145,11 @@ try {
 +----+----------------+------------+----------------+--------------+
 ```
 
-_In your terminal_
+_Dans ton terminal._
 
 ![image ts-errors](https://raw.githubusercontent.com/Heleneb1/ts-errors/main/assets/image1.png)
 
-_If details are too long, they're truncates in the table and printed bellow._
+_Avec des details ajoutés en dessous si présents._
 
 ```
 +----+----------------+------------+-----------------------------------+--------------+
@@ -170,13 +165,13 @@ Details (full):
 }
 ```
 
-_In your terminal._
+_Dans ton terminal._
 
 ![image ts-errors](https://raw.githubusercontent.com/Heleneb1/ts-errors/main/assets/image2.png)
 
 ---
 
-## ⚡ Available Errors
+## ⚡ Erreurs disponibles
 
 - BadRequestError
 - UnauthorizedError
@@ -191,25 +186,25 @@ _In your terminal._
 
 ---
 
-## 📚 `CustomError` API
+## 📚 API `CustomError`
 
 | Propriété    | Type                      | Description                          |
 | ------------ | ------------------------- | ------------------------------------ |
-| `message`    | `string`                  | Error message                        |
-| `statusCode` | `number`                  | HTTP status code                     |
-| `emoji`      | `string`                  | Associated Emoji                     |
+| `message`    | `string`                  | Message d’erreur                     |
+| `statusCode` | `number`                  | Code HTTP                            |
+| `emoji`      | `string`                  | Emoji associé                        |
 | `category`   | `string`                  | `"Client Error"` ou `"Server Error"` |
-| `details`    | `Record<string, unknown>` | Additional data                      |
+| `details`    | `Record<string, unknown>` | Données supplémentaires              |
 
-### Methods
+### Méthodes
 
-- `log()` — prints the formatted error
-- `formatedMessage(compact, showEmoji, colorize)` — returns a styled message
-- `toJSON()` — serializes the error for API responses
+- `log()` — affiche l’erreur formatée
+- `formatedMessage(compact, showEmoji, colorize)` — retourne une version stylée du message
+- `toJSON()` — sérialise l’erreur pour une réponse API
 
 ---
 
-## 🧱 Package Structure
+## 🧱 Structure du package
 
 ```ts
 export * from "./CustomError";
@@ -228,10 +223,11 @@ npm test
 
 ---
 
-## 🛡️ License
+## 🛡️ Licence
 
-MIT — see [LICENSE](LICENSE) for details.
-You're free to use and modify this library as you see fit.
+MIT — voir [LICENSE](LICENSE) pour plus de détails.
+
+- libre à toi de l’utiliser, l’adapter et l’améliorer.
 
 ---
 
