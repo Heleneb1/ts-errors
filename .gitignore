@@ -1,0 +1,15 @@
+# Node
+node_modules/
+dist/
+coverage/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Tests
+# __tests__/
+# *.test.ts
