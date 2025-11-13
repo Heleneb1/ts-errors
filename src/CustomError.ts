@@ -43,18 +43,39 @@ export class CustomError extends Error {
         if (statusCode >= 300) return `\x1b[32m${str}\x1b[0m`; // vert
         return `\x1b[34m${str}\x1b[0m`; // bleu
     }
-    constructor(message: string, statusCode?: number, details?: Record<string, unknown>) {
-        super(message);
-        const errorObj = getErrorObject(statusCode || 0);
+    constructor(message: any, statusCode?: number, details?: Record<string, unknown>) {
+
+        // Si "message" est un objet → extraction intelligente
+        if (message && typeof message === "object") {
+            details = details || message.details || undefined;
+            statusCode = typeof message.statusCode === "number" ? message.statusCode : statusCode;
+
+            const rawMsg = message.message || message.error;
+
+            // Sécurise les objets
+            if (typeof rawMsg === "object") {
+                message = JSON.stringify(rawMsg);
+            } else {
+                message = rawMsg || "Unexpected error";
+            }
+        }
+
+        // Force string propre
+        super(String(message));
+
+        // Sécurisation du statusCode
+        if (typeof statusCode !== "number" || isNaN(statusCode)) {
+            statusCode = 500;
+        }
+
+        const errorObj = getErrorObject(statusCode);
+
         this.emoji = errorObj.emoji;
         this.category = errorObj.category;
         this.statusCode = statusCode;
         this.details = details;
         this.name = this.constructor.name;
         this.defaultMsg = errorObj.defaultMsg;
-
-
-        // Capture de la stack trace (Node.js spécifique)
 
         if (Error.captureStackTrace) {
             Error.captureStackTrace(this, this.constructor);
