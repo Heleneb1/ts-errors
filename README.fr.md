@@ -86,6 +86,49 @@ throw new CustomError("Something went wrong", 500, {
 
 ---
 
+### ⚠️ Créer un `CustomError` correctement
+
+## L’ordre des arguments compte !
+
+💡 **Signature** :
+
+```ts
+new CustomError(
+  message: string,                // texte de l’erreur
+  statusCode?: number,            // code HTTP (par défaut 500)
+  details?: Record<string, any>   // infos supplémentaires
+)
+```
+
+✅ Exemple correct :
+
+```ts
+throw new CustomError("Joke not found", 404, {
+  jokeId: id,
+  info: "Cette blague n'existe pas",
+});
+```
+
+❌ Exemple à éviter :
+
+```ts
+// Mauvais ordre → le statusCode sera remplacé par l’objet details
+throw new CustomError("Joke not found", { jokeId: id }, 404);
+```
+
+💡 Astuce :
+Tu peux aussi passer directement un objet si tu veux :
+
+```ts
+throw new CustomError({
+  message: "Joke not found",
+  statusCode: 404,
+  details: { jokeId: id },
+});
+```
+
+---
+
 ## 🧰 Middleware Express
 
 ```ts

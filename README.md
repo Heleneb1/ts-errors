@@ -91,6 +91,49 @@ throw new CustomError("Something went wrong", 500, {
 
 ---
 
+### ⚠️ Creating a `CustomError` Correctly
+
+## The order of arguments matters!
+
+💡 **Signature**:
+
+```ts
+new CustomError(
+  message: string,                // error text
+  statusCode?: number,            // HTTP status code (default 500)
+  details?: Record<string, any>   // additional info
+)
+```
+
+✅ Correct example:
+
+```ts
+throw new CustomError("Joke not found", 404, {
+  jokeId: id,
+  info: "This joke does not exist",
+});
+```
+
+❌ Example to avoid:
+
+```ts
+// Wrong order → statusCode will be replaced by the details object
+throw new CustomError("Joke not found", { jokeId: id }, 404);
+```
+
+💡 Tip:
+You can also pass an object directly:
+
+```ts
+throw new CustomError({
+  message: "Joke not found",
+  statusCode: 404,
+  details: { jokeId: id },
+});
+```
+
+---
+
 ## 🧰 Express Middleware
 
 ```ts
