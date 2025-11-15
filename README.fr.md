@@ -66,12 +66,7 @@ yarn add @heleneb1/ts-errors
 
 Regarde directement la démo de la lib ci-dessous :
 
-<video width="600" controls>
-  <source src="https://github.com/Heleneb1/ts-errors/raw/main/assets/demo-small.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-
----
+## ![Démo de ma lib](assets/demo.gif)
 
 ### TypeScript
 
