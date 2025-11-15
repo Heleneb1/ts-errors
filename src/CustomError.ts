@@ -46,19 +46,33 @@ export class CustomError extends Error {
     constructor(message: any, statusCode?: number, details?: Record<string, unknown>) {
 
         // Si "message" est un objet → extraction intelligente
-        if (message && typeof message === "object") {
-            details = details || message.details || undefined;
-            statusCode = typeof message.statusCode === "number" ? message.statusCode : statusCode;
+        // Si "message" est un objet → extraction intelligente
+        if (message && typeof message === "object" && !(message instanceof Error)) {
 
-            const rawMsg = message.message || message.error;
-
-            // Sécurise les objets
-            if (typeof rawMsg === "object") {
-                message = JSON.stringify(rawMsg);
-            } else {
-                message = rawMsg || "Unexpected error";
+            // 1. Details (si le paramètre n'est pas déjà rempli)
+            if (!details && typeof message.details === "object") {
+                details = message.details;
             }
+
+            // 2. StatusCode
+            const sc = message.statusCode ?? message.status;
+            if (typeof sc === "number") {
+                statusCode = sc;
+            }
+
+            // 3. Message
+            const rawMsg =
+                message.message ??
+                message.msg ??
+                message.error ??
+                "Unexpected error";
+
+            message =
+                typeof rawMsg === "object"
+                    ? JSON.stringify(rawMsg)
+                    : rawMsg;
         }
+
 
         // Force string propre
         super(String(message));

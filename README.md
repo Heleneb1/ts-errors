@@ -54,12 +54,25 @@ Because errors deserve better than `throw new Error("Oops")`.
 ## 🚀 Installation
 
 ```bash
-npm install ts-errors
+# With npm
+npm install @heleneb1/ts-errors
+
+# Or yarn
+yarn add @heleneb1/ts-errors
 ```
 
 ---
 
 ## ⚙️ Quick Start
+
+### 👀 Demo
+
+<video width="600" controls>
+  <source src="https://github.com/Heleneb1/ts-errors/raw/main/assets/demo-small.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+---
 
 ### TypeScript
 
@@ -109,8 +122,7 @@ new CustomError(
 
 ```ts
 throw new CustomError("Joke not found", 404, {
-  jokeId: id,
-  info: "This joke does not exist",
+  info: `Joke with id ${id} not found 😔`, // free text, add anything you want
 });
 ```
 
