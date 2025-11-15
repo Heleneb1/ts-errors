@@ -66,7 +66,11 @@ yarn add @heleneb1/ts-errors
 
 Regarde directement la démo de la lib ci-dessous :
 
-## ![Démo de ma lib](assets/demo.gif)
+
+https://github.com/user-attachments/assets/c3293e94-1e56-4fec-98c9-b9d89c35ae28
+
+
+
 
 ### TypeScript
 
