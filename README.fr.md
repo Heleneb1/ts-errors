@@ -66,7 +66,13 @@ yarn add @heleneb1/ts-errors
 
 Regarde directement la démo de la lib ci-dessous :
 
-## ![Démo de ma lib](assets/demo.gif)
+<div align="center">
+  <img src="https://raw.githubusercontent.com/Heleneb1/ts-errors/main/assets/demo_compressed.gif" alt="Demo" width="600">
+ <br><br>
+  <a href="https://raw.githubusercontent.com/Heleneb1/ts-errors/main/assets/demo_compressed.gif"> 
+    📹  <em>Cliquez ici pour voir la démo en plein écran</em>
+  </a>
+</div>
 
 ### TypeScript
 
