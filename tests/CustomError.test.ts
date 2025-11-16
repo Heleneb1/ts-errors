@@ -35,8 +35,8 @@ describe("CustomError", () => {
         expect(json).toHaveProperty("timestamp");
     });
 
-    test("formatedMessage compact", () => {
-        const msg = new CustomError("Error", 401).formatedMessage(true, false, false);
+    test("formattedMessage compact", () => {
+        const msg = new CustomError("Error", 401).formattedMessage(true, false, false);
         expect(msg.includes("401")).toBe(true);
         expect(msg.includes("Error")).toBe(true);
     });

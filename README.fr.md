@@ -4,7 +4,7 @@
 
 # 🧱 ts-errors
 
-[![npm version](https://img.shields.io/npm/v/ts-errors)](https://www.npmjs.com/package/ts-errors)
+[![npm version](https://img.shields.io/npm/v/@heleneb1/ts-errors)](https://www.npmjs.com/package/@heleneb1/ts-errors)
 [![GitHub stars](https://img.shields.io/github/stars/Heleneb1/ts-errors?style=social)](https://github.com/Heleneb1/ts-errors)
 [![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://github.com/Heleneb1/ts-errors)
 
@@ -58,10 +58,6 @@ yarn add @heleneb1/ts-errors
 
 ---
 
-## ⚙️ Utilisation rapide
-
----
-
 ### 👀 Démo
 
 Regarde directement la démo de la lib ci-dessous :
@@ -69,15 +65,19 @@ Regarde directement la démo de la lib ci-dessous :
 <div align="center">
   <img src="https://raw.githubusercontent.com/Heleneb1/ts-errors/main/assets/demo_compressed.gif" alt="Demo" width="600">
  <br><br>
-  <a href="https://raw.githubusercontent.com/Heleneb1/ts-errors/main/assets/demo_compressed.gif"> 
+    <a href="https://raw.githubusercontent.com/Heleneb1/ts-errors/main/assets/demo_compressed.gif">
     📹  <em>Cliquez ici pour voir la démo en plein écran</em>
   </a>
 </div>
 
+---
+
+## ⚙️ Utilisation rapide
+
 ### TypeScript
 
 ```ts
-import { NotFoundError } from "ts-errors";
+import { NotFoundError } from "@heleneb1/ts-errors";
 
 throw NotFoundError("User not found", { userId: 42 });
 ```
@@ -85,17 +85,15 @@ throw NotFoundError("User not found", { userId: 42 });
 ### JavaScript
 
 ```js
-const { NotFoundError } = require("ts-errors");
+const { NotFoundError } = require("@heleneb1/ts-errors");
 
 throw NotFoundError("User not found", { userId: 42 });
 ```
 
----
-
 ## 🧩 Exemple avec `CustomError`
 
 ```ts
-import { CustomError } from "ts-errors";
+import { CustomError } from "@heleneb1/ts-errors";
 
 throw new CustomError("Something went wrong", 500, {
   context: "DB connection",
@@ -150,7 +148,7 @@ throw new CustomError({
 
 ```ts
 import express from "express";
-import { errorMiddleware, NotFoundError } from "ts-errors";
+import { errorMiddleware, NotFoundError } from "@heleneb1/ts-errors";
 
 const app = express();
 
@@ -165,10 +163,22 @@ app.use(errorMiddleware);
 
 ---
 
+```ts
+import express from "express";
+import { errorMiddleware, NotFoundError } from "@heleneb1/ts-errors";
+
+const app = express();
+
+app.get("/test", (req, res, next) => next(NotFoundError("Test error")));
+app.use(errorMiddleware);
+
+app.listen(3000, () => console.log("Server running on :3000"));
+```
+
 ## ⚙️ Configuration Globale
 
 ```ts
-import { CustomError } from "ts-errors";
+import { CustomError } from "@heleneb1/ts-errors";
 
 CustomError.settings = {
   showEmoji: false,
@@ -184,7 +194,7 @@ CustomError.setLogger(myWinstonLogger, "error");
 ## 🔌 Intégration avec un Logger Externe
 
 ```ts
-import { CustomError } from "ts-errors";
+import { CustomError } from "@heleneb1/ts-errors";
 import winston from "winston";
 
 const logger = winston.createLogger({
@@ -213,7 +223,7 @@ try {
 Chaque CustomError peut être affichée en tableau dans la console avec log() ou récupérée au format JSON avec toJSON().
 
 ```ts
-import { NotFoundError, CustomError } from "ts-errors";
+import { NotFoundError, CustomError } from "@heleneb1/ts-errors";
 
 try {
   throw NotFoundError(undefined, { userId: 42 });
@@ -229,7 +239,7 @@ try {
 }
 ```
 
-![image ts-errors](https://raw.githubusercontent.com/Heleneb1/ts-errors/main/assets/image.png)
+![image @heleneb1/ts-errors](https://raw.githubusercontent.com/Heleneb1/ts-errors/main/assets/image.png)
 
 ### Exemple de sortie console
 
@@ -245,7 +255,7 @@ _Dans ton terminal._
 
 ![image ts-errors](https://raw.githubusercontent.com/Heleneb1/ts-errors/main/assets/image1.png)
 
-_Avec des details ajoutés en dessous si présents._
+_Avec les détails complets ci-dessous._
 
 ```
 +----+----------------+------------+-----------------------------------+--------------+
@@ -263,7 +273,7 @@ Details (full):
 
 _Dans ton terminal._
 
-![image ts-errors](https://raw.githubusercontent.com/Heleneb1/ts-errors/main/assets/image2.png)
+![image @heleneb1/ts-errorss](https://raw.githubusercontent.com/Heleneb1/ts-errors/main/assets/image2.png)
 
 ---
 
@@ -295,7 +305,7 @@ _Dans ton terminal._
 ### Méthodes
 
 - `log()` — affiche l’erreur formatée
-- `formatedMessage(compact, showEmoji, colorize)` — retourne une version stylée du message
+- `formattedMessage(compact, showEmoji, colorize)` — retourne une version stylée du message
 - `toJSON()` — sérialise l’erreur pour une réponse API
 
 ---

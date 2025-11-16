@@ -113,7 +113,7 @@ export class CustomError extends Error {
         if (str.length <= maxLen) return str;
         return str.slice(0, maxLen) + '...';
     }
-    formatedMessage(compact: boolean = CustomError.settings.defaultCompact,
+    formattedMessage(compact: boolean = CustomError.settings.defaultCompact,
         showEmoji: boolean = CustomError.settings.showEmoji,
         colorize: boolean = CustomError.settings.colorize,
 
@@ -149,7 +149,7 @@ export class CustomError extends Error {
         colorize: boolean = CustomError.settings.colorize
     ): void {
         if (compact) {
-            console.log(this.formatedMessage(compact, showEmoji, colorize));
+            console.log(this.formattedMessage(compact, showEmoji, colorize));
             return;
         }
 
@@ -214,7 +214,7 @@ export class CustomError extends Error {
         // Utilisation du logger externe si défini
         if (CustomError.externalLogger) {
             const { instance, level } = CustomError.externalLogger;
-            instance[level](this.formatedMessage(compact, showEmoji, colorize));
+            instance[level](this.formattedMessage(compact, showEmoji, colorize));
         }
         const end = '\n';
         console.log(end);
