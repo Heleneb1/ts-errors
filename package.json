@@ -1,6 +1,6 @@
 {
   "name": "@heleneb1/ts-errors",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Lightweight TypeScript library to create, manage and log typed, structured errors for Node.js, Express, and JavaScript apps.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -14,20 +14,20 @@
     "build": "tsc",
     "test": "jest --verbose"
   },
-"keywords": [
-  "typescript",
-  "errors",
-  "error-handling",
-  "typed-errors",
-  "custom-errors",
-  "exceptions",
-  "nodejs",
-  "express",
-  "logging",
-  "developer-tools",
-  "utilities",
-  "js"
-],
+  "keywords": [
+    "typescript",
+    "errors",
+    "error-handling",
+    "typed-errors",
+    "custom-errors",
+    "exceptions",
+    "nodejs",
+    "express",
+    "logging",
+    "developer-tools",
+    "utilities",
+    "js"
+  ],
   "author": "Heleneb1",
   "license": "MIT",
   "devDependencies": {
