@@ -4,7 +4,12 @@
 
 # 🧱 ts-errors
 
+**ts-errors est une librairie TypeScript légère pour créer des erreurs structurées et typées avec style. Compatible avec TypeScript, Node.js, Express et les applications JavaScript.**
+
+[![New](https://img.shields.io/badge/status-new-brightgreen)](https://www.npmjs.com/package/@heleneb1/ts-errors)
 [![npm version](https://img.shields.io/npm/v/@heleneb1/ts-errors)](https://www.npmjs.com/package/@heleneb1/ts-errors)
+[![npm downloads](https://img.shields.io/npm/dm/@heleneb1/ts-errors)](https://www.npmjs.com/package/@heleneb1/ts-errors)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/@heleneb1/ts-errors)](https://www.npmjs.com/package/@heleneb1/ts-errors)
 [![GitHub stars](https://img.shields.io/github/stars/Heleneb1/ts-errors?style=social)](https://github.com/Heleneb1/ts-errors)
 [![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://github.com/Heleneb1/ts-errors)
 
