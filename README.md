@@ -14,7 +14,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/Heleneb1/ts-errors?style=social)](https://github.com/Heleneb1/ts-errors)
 [![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](https://github.com/Heleneb1/ts-errors)
 
-📘 This README is also available in [🇫🇷 French](README.fr.md) and [🇬🇧 English](README.en.md).
+📘 This README is also available in [🇫🇷 French](README.fr.md) and [🇬🇧 English](README.md).
 
 > Handle HTTP errors painlessly — with elegance, strict typing, and a touch of emoji ✨
 
