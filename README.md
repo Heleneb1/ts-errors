@@ -157,20 +157,113 @@ throw new CustomError({
 
 ## 🧰 Express Middleware
 
+## 🧰 Middleware Express
+
 ```ts
 import express from "express";
-import { errorMiddleware, NotFoundError } from "@heleneb1/ts-errors";
+import { errorMiddleware, CustomError } from "@heleneb1/ts-errors";
 
 const app = express();
 
-app.get("/user/:id", (req, res, next) => {
-  next(NotFoundError("User not found", { id: req.params.id }));
+app.get("/test-error", (req, res, next) => {
+  next(new CustomError("Something went wrong!", 400, { route: "/test-error" }));
 });
 
 app.use(errorMiddleware);
 ```
 
-> The errorMiddleware automatically serializes and sends JSON responses to the client.
+> Le middleware `errorMiddleware` gère automatiquement la sérialisation et la réponse JSON côté client.
+
+---
+
+```ts
+// Exemple with Sequelize and DB error handling
+
+import { Sequelize } from "sequelize";
+import express from "express";
+import { errorMiddleware, CustomError } from "@heleneb1/ts-errors";
+const app = express();
+const sequelize = new Sequelize("sqlite::memory:");
+
+app.get("/db-error", async (req, res, next) => {
+  try {
+    await sequelize.query("SELECT * FROM jokes");
+    res.send("✅ DB query ok");
+  } catch (err) {
+    next(
+      new CustomError("Database error", 500, {
+        category: "DB",
+        details: err.message,
+      })
+    );
+  }
+});
+// simulated route to trigger a DB error
+app.get("/db-error-test", (req, res, next) => {
+  next(
+    new CustomError("Database error", 500, {
+      category: "DB",
+      details: "Simulated error",
+    })
+  );
+});
+
+// Mount the error middleware
+app.use(errorMiddleware);
+```
+
+![sortie terminal @heleneb1/ts-errors](https://raw.githubusercontent.com/Heleneb1/ts-errors/main/assets/db_error_test.png)
+
+_Terminal output_
+
+![sortie client @heleneb1/ts-errors](https://raw.githubusercontent.com/Heleneb1/ts-errors/main/assets/db_error_test_nav.png)
+
+_Client output_
+
+```json
+{
+  "message": "Database error",
+  "statusCode": 500,
+  "emoji": "💥",
+  "category": "Server Error",
+  "details": {
+    "category": "DB",
+    "details": "Simulated error"
+  }
+}
+```
+
+## Best practices
+
+Toujours ajouter statusCode et details aux erreurs.
+
+Configure les options globales (showEmoji, colorize, autoLog) selon dev / prod.
+
+Utiliser le middleware pour centraliser les erreurs.
+
+Les erreurs côté frontend peuvent être loggées avec formattedMessage().
+
+## Exemples concrets
+
+Express
+
+```ts
+app.get("/test-error", (req, res, next) => {
+  next(new CustomError("Something went wrong!", 400, { route: "/test-error" }));
+});
+```
+
+NestJS
+
+```ts
+@Catch(CustomError)
+export class CustomErrorFilter implements ExceptionFilter {
+  catch(exception: CustomError, host: ArgumentsHost) {
+    const response = host.switchToHttp().getResponse();
+    response.status(exception.statusCode || 500).json(exception.toJSON());
+  }
+}
+```
 
 ---
 
@@ -341,6 +434,6 @@ You're free to use and modify this library as you see fit.
 
 ---
 
-## ✨ Auteur
+## ✨ Author
 
 Made with ❤️ & TypeScript by **HeleneB1** — creative technologist & digital art director.
