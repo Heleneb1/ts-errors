@@ -157,8 +157,6 @@ throw new CustomError({
 
 ## 🧰 Express Middleware
 
-## 🧰 Middleware Express
-
 ```ts
 import express from "express";
 import { errorMiddleware, CustomError } from "@heleneb1/ts-errors";
@@ -172,7 +170,7 @@ app.get("/test-error", (req, res, next) => {
 app.use(errorMiddleware);
 ```
 
-> Le middleware `errorMiddleware` gère automatiquement la sérialisation et la réponse JSON côté client.
+> The errorMiddleware automatically serializes and sends JSON responses to the client.
 
 ---
 
@@ -235,13 +233,13 @@ _Client output_
 
 ## Best practices
 
-Toujours ajouter statusCode et details aux erreurs.
+Always include statusCode and details in your errors.
 
-Configure les options globales (showEmoji, colorize, autoLog) selon dev / prod.
+Configure global options (showEmoji, colorize, autoLog) according to dev/prod environment.
 
-Utiliser le middleware pour centraliser les erreurs.
+Use the middleware to centralize error handling.
 
-Les erreurs côté frontend peuvent être loggées avec formattedMessage().
+Frontend errors can be logged using formattedMessage().
 
 ## Exemples concrets
 
