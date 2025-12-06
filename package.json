@@ -1,6 +1,6 @@
 {
   "name": "@heleneb1/ts-errors",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Lightweight TypeScript library to create, manage and log typed, structured errors for Node.js, Express and modern JavaScript apps. Simplify error handling, improve debugging, and keep your API responses clean and consistent.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
